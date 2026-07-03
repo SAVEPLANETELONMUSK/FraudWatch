@@ -218,3 +218,11 @@ It is a **decision support system** that helps users:
 - Verify more safely
 - Recover more confidently
 - Learn continuously
+
+## Platform Values
+
+- Trust through transparency
+- Privacy by design
+- Education before reaction
+- Evidence before publication
+- Compassion for victims

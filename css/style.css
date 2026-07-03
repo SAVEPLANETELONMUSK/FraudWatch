@@ -1,3 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F4F7FB;
+    color: #222;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    background: #003366;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+/* NAV */
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    background: #0077CC;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #005fa3;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* RESULTS BOX */
+.results-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-left: 5px solid #0077CC;
+}
+
+/* SUPPORT BANNER */
+.support-banner {
+    background: #003366;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
 /* ===========================
    FRAUDWATCH STYLE.CSS
 =========================== */
@@ -361,4 +446,24 @@ border-color:#0077cc;
 
 box-shadow:0 0 8px rgba(0,119,204,.2);
 
+}
+
+.fw-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.fw-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.fw-nav a:hover {
+    background: rgba(255,255,255,0.15);
 }

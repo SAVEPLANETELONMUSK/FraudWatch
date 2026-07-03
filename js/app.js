@@ -71,3 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const navContainer = document.getElementById("nav-container");
+
+    if (navContainer) {
+        fetch("components/nav.html")
+            .then(res => res.text())
+            .then(data => {
+                navContainer.innerHTML = data;
+            });
+    }
+
+});

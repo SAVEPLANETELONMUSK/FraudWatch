@@ -49,3 +49,27 @@
 - Homepage redesign planned
 - Homepage architecture documented
 - Quick Action Dashboard introduced
+
+## Version 4.4.0
+
+- Added Trust & Transparency section
+- Added Why FraudWatch overview
+- Strengthened homepage guidance
+
+## Version 4.5.0
+
+- Added platform ethics document
+- Defined platform values
+- Strengthened trust framework
+
+## Version 5.0
+
+- User journeys documented
+- Official resources planning added
+- Accessibility standards documented
+
+## Version 5.1.0
+
+- Added release management documentation
+- Defined software release process
+- Marked foundation phase complete
