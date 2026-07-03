@@ -103,3 +103,9 @@
 - Dashboard architecture documented
 - Feature matrix created
 - Platform goals documented
+
+## Version 7.0.0
+
+- Added quality standards
+- Added beta launch checklist
+- Added platform risk register
