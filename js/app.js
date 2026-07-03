@@ -1,31 +1,72 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.querySelector(".verify-form form");
+    const resultsBox = document.getElementById("searchResults");
+    const input = document.getElementById("searchInput");
 
-    if (!form) return;
+    if (!form || !resultsBox || !input) return;
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", function (e) {
 
-        event.preventDefault();
+        e.preventDefault();
 
-        const inputs = form.querySelectorAll("input, textarea");
+        const search = input.value.trim().toLowerCase();
 
-        let hasValue = false;
+        if (search === "") {
 
-        inputs.forEach(input => {
-            if (input.value.trim() !== "") {
-                hasValue = true;
-            }
-        });
+            resultsBox.innerHTML = `
+                <h3>Verification Results</h3>
+                <p>Please enter a phone number, website, company name, email or keyword.</p>
+            `;
 
-        if (!hasValue) {
-            alert("Please enter at least one piece of information to verify.");
             return;
+
         }
 
-        alert(
-            "Thank you. FraudWatch received your verification request.\n\nThis is the first version of the platform. Verification features are still under development."
-        );
+        let found = null;
+
+        scamDatabase.forEach(function (item) {
+
+            if (search.includes(item.keyword)) {
+
+                found = item;
+
+            }
+
+        });
+
+        if (found) {
+
+            resultsBox.innerHTML = `
+                <h3>⚠ Match Found</h3>
+
+                <p><strong>Scam Type:</strong> ${found.type}</p>
+
+                <p><strong>Risk Level:</strong>
+                <span class="risk-high">${found.risk}</span></p>
+
+                <p>${found.message}</p>
+
+                <p><strong>Recommendation:</strong>
+                Exercise caution and independently verify any request for money or personal information.</p>
+            `;
+
+        } else {
+
+            resultsBox.innerHTML = `
+                <h3>✓ No Match Found</h3>
+
+                <p>
+                No matching record was found in the current demonstration database.
+                </p>
+
+                <p>
+                This does not mean the person, company or website is trustworthy.
+                Always perform additional checks before making payments or sharing personal information.
+                </p>
+            `;
+
+        }
 
     });
 
