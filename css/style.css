@@ -118,3 +118,191 @@ nav a:hover{
 .card p{
     font-size:15px;
 }
+
+/* ===========================
+   HOW IT WORKS
+=========================== */
+
+.how-it-works{
+    padding:80px 20px;
+    background:#ffffff;
+    text-align:center;
+}
+
+.how-it-works h2{
+    color:#003366;
+    margin-bottom:40px;
+    font-size:34px;
+}
+
+/* ===========================
+   SCAM CATEGORIES
+=========================== */
+
+.categories{
+    background:#f4f7fb;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.categories h2{
+    color:#003366;
+    margin-bottom:40px;
+    font-size:34px;
+}
+
+/* ===========================
+   SUPPORT BANNER
+=========================== */
+
+.support-banner{
+    background:#003366;
+    color:white;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.support-banner h2{
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.support-banner p{
+    max-width:800px;
+    margin:auto;
+    margin-bottom:30px;
+    font-size:18px;
+}
+
+.support-banner .btn{
+    background:#00b894;
+}
+
+.support-banner .btn:hover{
+    background:#009c7d;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    background:#001f3f;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+footer p{
+    margin:8px 0;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+
+@media(max-width:768px){
+
+.card{
+
+    width:90%;
+
+}
+
+.hero h2{
+
+    font-size:30px;
+
+}
+
+header h1{
+
+    font-size:32px;
+
+}
+
+nav a{
+
+    display:block;
+
+    margin:10px 0;
+
+}
+
+}
+
+/* ===========================
+   VERIFY PAGE
+=========================== */
+
+.verify-form{
+    padding:80px 20px;
+    background:#ffffff;
+}
+
+.verify-form h2{
+    text-align:center;
+    color:#003366;
+    margin-bottom:35px;
+    font-size:34px;
+}
+
+.verify-form form{
+    max-width:700px;
+    margin:auto;
+}
+
+.verify-form input,
+.verify-form textarea{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    border:1px solid #d6dce5;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.verify-form input:focus,
+.verify-form textarea:focus{
+
+    border-color:#0077cc;
+
+    box-shadow:0 0 8px rgba(0,119,204,.2);
+
+}
+
+.verify-form textarea{
+
+    min-height:150px;
+
+    resize:vertical;
+
+}
+
+.verify-form button{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}

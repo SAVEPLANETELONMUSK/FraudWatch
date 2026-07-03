@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "type": "Investment Scam",
+    "company": "Fake Crypto Invest",
+    "website": "fakecryptoinvest.com",
+    "risk": "High",
+    "status": "Reported"
+  },
+  {
+    "id": 2,
+    "type": "Romance Scam",
+    "company": "Unknown",
+    "website": "",
+    "risk": "High",
+    "status": "Reported"
+  },
+  {
+    "id": 3,
+    "type": "Shopping Scam",
+    "company": "Cheap Electronics Store",
+    "website": "cheap-electronics-store.com",
+    "risk": "Medium",
+    "status": "Reported"
+  }
+]
