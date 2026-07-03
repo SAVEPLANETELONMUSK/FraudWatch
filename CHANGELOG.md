@@ -43,3 +43,9 @@
 - Alert documentation added
 - First alert content created
 - Alert JavaScript module initialized
+
+## Version 3.4.0
+
+- Homepage redesign planned
+- Homepage architecture documented
+- Quick Action Dashboard introduced
