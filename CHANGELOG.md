@@ -91,3 +91,15 @@
 - API architecture documented
 - Database schema planned
 - Deployment checklist created
+
+## Version 6.2.0
+
+- Defined case management workflow
+- Added standard fraud report template
+- Planned report lifecycle
+
+## Version 6.3.0
+
+- Dashboard architecture documented
+- Feature matrix created
+- Platform goals documented
