@@ -1,27 +1,30 @@
 const scamDatabase = [
 
 {
-    id:1,
-    keyword:"fakecryptoinvest",
-    type:"Investment Scam",
-    risk:"HIGH",
-    message:"This investment platform has been reported by users. Do not send money without independent verification."
+id:1,
+keyword:"fakecryptoinvest",
+title:"Fake Crypto Invest",
+type:"Investment Scam",
+risk:"HIGH",
+message:"Multiple reports indicate this investment platform may be fraudulent. Never invest without independent verification."
 },
 
 {
-    id:2,
-    keyword:"cheap-electronics-store",
-    type:"Shopping Scam",
-    risk:"MEDIUM",
-    message:"Exercise caution. Verify reviews and payment methods before purchasing."
+id:2,
+keyword:"romance",
+title:"Romance Scam",
+type:"Romance Scam",
+risk:"HIGH",
+message:"Be cautious if someone you met online asks for money, gift cards or cryptocurrency."
 },
 
 {
-    id:3,
-    keyword:"romance",
-    type:"Romance Scam",
-    risk:"HIGH",
-    message:"Be cautious if someone you've met online asks for money, gifts, or financial help."
+id:3,
+keyword:"cheap-electronics-store",
+title:"Cheap Electronics Store",
+type:"Shopping Scam",
+risk:"MEDIUM",
+message:"Exercise caution. Research the seller and use payment methods with buyer protection."
 }
 
 ];

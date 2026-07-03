@@ -20,3 +20,19 @@
 - Support Centre created
 - Emotional recovery guidance added
 - Safety resources introduced
+
+## Version 2.2.0
+- Project architecture documented
+- Core system modules defined
+- Service layer initialized
+
+## Version 2.3.0
+- Created Verification Engine v1
+- Automatic input type detection
+- Added dedicated verify.js module
+- Prepared verification workflow for database integration
+
+## Version 2.5.0
+- Connected Verification Engine to the demonstration database
+- Added demo risk assessment
+- Added verification guidance and recommendations
