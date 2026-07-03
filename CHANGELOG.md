@@ -36,3 +36,10 @@
 - Connected Verification Engine to the demonstration database
 - Added demo risk assessment
 - Added verification guidance and recommendations
+
+## Version 3.3.0
+
+- Scam Alert Engine foundation created
+- Alert documentation added
+- First alert content created
+- Alert JavaScript module initialized
