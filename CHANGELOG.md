@@ -73,3 +73,9 @@
 - Added release management documentation
 - Defined software release process
 - Marked foundation phase complete
+
+## Version 5.2.0
+
+- Introduced Verification Report layout
+- Added reusable report styles
+- Improved verification result presentation
