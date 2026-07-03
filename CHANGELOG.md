@@ -79,3 +79,15 @@
 - Introduced Verification Report layout
 - Added reusable report styles
 - Improved verification result presentation
+
+## Version 6.0.0
+
+- Project structure documented
+- Platform architecture refined
+- Development moved to feature-based roadmap
+
+## Version 6.1.0
+
+- API architecture documented
+- Database schema planned
+- Deployment checklist created
