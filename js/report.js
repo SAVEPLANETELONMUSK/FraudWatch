@@ -1,37 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
 const form = document.getElementById("reportForm");
-const message = document.getElementById("reportMessage");
+const result = document.getElementById("reportResult");
 
-if(!form) return;
+if (!form || !result) return;
 
-form.addEventListener("submit",(e)=>{
+form.addEventListener("submit", function (e) {
 
 e.preventDefault();
 
-const company = document.getElementById("company").value.trim();
-const type = document.getElementById("scamType").value;
+const category = document.getElementById("category").value;
+const target = document.getElementById("target").value.trim();
 const description = document.getElementById("description").value.trim();
 
-if(company==="" || type==="" || description===""){
+if (category === "" || description === "") {
 
-message.innerHTML=`
-<h3>Missing Information</h3>
-<p>Please complete the required fields before submitting.</p>
+result.innerHTML = `
+<h3>⚠ Incomplete Report</h3>
+<p>Please choose a scam category and describe what happened before submitting your report.</p>
 `;
 
 return;
 
 }
 
-message.innerHTML=`
+const reportId = "FW-" + Date.now();
+
+result.innerHTML = `
 <h3>✅ Report Received</h3>
 
-<p>Thank you for helping protect others.</p>
+<p><strong>Reference Number:</strong> ${reportId}</p>
 
-<p>Your report has been accepted in this demonstration version.</p>
+<p><strong>Category:</strong> ${category}</p>
 
-<p>In a future release, reports will be reviewed before they become publicly searchable.</p>
+<p><strong>Related Information:</strong> ${target || "Not provided"}</p>
+
+<p>
+
+Thank you for your report.
+
+FraudWatch has recorded this submission for educational purposes and future platform development.
+
+Please keep your reference number if you contact us again about this report.
+
+</p>
 `;
 
 form.reset();
