@@ -1,49 +1,70 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Report Fraud | FraudWatch</title>
+
+<title>FraudWatch | Report Centre</title>
 
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
 <header>
+
 <div class="container">
 
-<h1>FraudWatch</h1>
+<h1>🛡 FraudWatch</h1>
 
 <p class="tagline">
+
 Protecting People. Preventing Fraud. Restoring Confidence.
+
 </p>
 
 <nav>
 
 <a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
 <a href="verify.html">Verify</a>
+
 <a href="report.html">Report</a>
+
 <a href="recovery.html">Recovery</a>
+
 <a href="support.html">Support</a>
+
 <a href="education.html">Education</a>
+
 <a href="contact.html">Contact</a>
 
 </nav>
 
 </div>
+
 </header>
 
 <section class="hero">
 
 <div class="container">
 
-<h2>Report a Scam</h2>
+<h2>
+
+Report a Suspected Scam
+
+</h2>
 
 <p>
 
-Help protect others by reporting suspected fraud.
-Reports should be truthful and based on your own experience or reliable information.
+Help raise awareness by submitting information about a suspected scam. Please provide accurate information and avoid including highly sensitive personal details.
 
 </p>
 
@@ -51,66 +72,263 @@ Reports should be truthful and based on your own experience or reliable informat
 
 </section>
 
-<section class="verify-form">
+<section>
 
 <div class="container">
 
-<h2>Fraud Report Form</h2>
+<div class="card">
+
+<h2>
+
+📝 Scam Report Form
+
+</h2>
+
+<p>
+
+Complete the form below. FraudWatch uses these reports to support fraud awareness and improve educational resources.
+
+</p>
 
 <form id="reportForm">
 
-<input
-type="text"
-id="fullName"
-placeholder="Your Name (Optional)">
+<label>
 
-<input
-type="email"
-id="email"
-placeholder="Email (Optional)">
+Scam Category
 
-<input
-type="text"
-id="company"
-placeholder="Company, Website or Person">
+</label>
 
-<select id="scamType">
+<select id="category" required>
 
-<option value="">Select Scam Type</option>
+<option value="">Select a category</option>
 
 <option>Investment Scam</option>
 
 <option>Romance Scam</option>
 
+<option>Cryptocurrency Scam</option>
+
 <option>Shopping Scam</option>
 
-<option>Crypto Scam</option>
+<option>Phishing Email</option>
+
+<option>Fake Job Scam</option>
 
 <option>Identity Theft</option>
 
-<option>Job Scam</option>
+<option>Impersonation Scam</option>
 
 <option>Other</option>
 
 </select>
 
-<textarea
-id="description"
-placeholder="Describe what happened"></textarea>
+<label>
 
-<button class="btn">
-Submit Report
+Website, Phone Number, Email, Username or Company (optional)
+
+</label>
+
+<input
+
+type="text"
+
+id="target"
+
+placeholder="Enter the suspicious information">
+
+<label>
+
+Describe What Happened
+
+</label>
+
+<textarea
+
+id="description"
+
+rows="8"
+
+placeholder="Describe what happened, when it happened, and why you believe it may be a scam."
+
+required>
+
+</textarea>
+
+<button
+
+class="btn"
+
+type="submit">
+
+🚨 Submit Report
+
 </button>
 
 </form>
 
-<div id="reportMessage" class="results-box">
-
-<h3>Report Status</h3>
+<div id="reportResult" class="card" style="margin-top:20px;">
 
 <p>
 
-Complete the form above to submit your report.
+Your submission status will appear here.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>
+
+📋 Evidence Checklist
+
+</h2>
+
+<div class="card">
+
+<p>
+
+Before submitting a report, try to collect as much accurate information as possible.
+
+</p>
+
+<ul>
+
+<li>📷 Screenshots of conversations</li>
+
+<li>📧 Email addresses involved</li>
+
+<li>📞 Phone numbers</li>
+
+<li>🌐 Website links (URLs)</li>
+
+<li>💬 Telegram, WhatsApp or social media usernames</li>
+
+<li>💳 Transaction references (if applicable)</li>
+
+<li>📅 Dates and times</li>
+
+<li>📝 A clear timeline of events</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>
+
+🛡 Stay Safe
+
+</h2>
+
+<div class="card">
+
+<p>
+
+For your protection, never include passwords, banking PINs, one-time verification codes (OTPs), recovery phrases, private keys, or other highly sensitive credentials in your report.
+
+</p>
+
+<p>
+
+If money has already been sent, contact your bank or payment provider as soon as possible and consider reporting the incident to the appropriate authorities in your country.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+
+Need Help With Your Report?
+
+</h2>
+
+<p>
+
+If you're unsure what information to include or would like guidance before submitting a report, you can contact the FraudWatch Support Centre.
+
+</p>
+
+<div class="hero-buttons">
+
+<a class="btn" href="mailto:Watchfraud98@gmail.com">
+
+📧 Email Support
+
+</a>
+
+<a class="btn" href="https://t.me/Fraudwatch_int" target="_blank">
+
+✈ Telegram
+
+</a>
+
+<a class="btn" href="https://wa.me/qr/ZJ5MAAEL5LGKF1" target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+
+✅ Before You Submit
+
+</h2>
+
+<p>
+
+Please review your report before submitting it. Providing clear, accurate, and factual information helps improve fraud awareness and educational resources.
+
+</p>
+
+<p>
+
+FraudWatch encourages responsible reporting. Do not knowingly submit false, misleading, or defamatory information. If you believe a crime has been committed, report it to the appropriate law enforcement or official reporting agency in your country.
+
+</p>
+
+<p>
+
+Submitting a report to FraudWatch does not create an official police report. FraudWatch uses reports to improve fraud awareness, educational content, and future platform development.
 
 </p>
 
@@ -124,19 +342,43 @@ Complete the form above to submit your report.
 
 <div class="container">
 
-<h3>FraudWatch</h3>
+<h2>
+
+🛡 FraudWatch
+
+</h2>
 
 <p>
 
-Protecting People.
-Preventing Fraud.
-Restoring Confidence.
+Protecting People. Preventing Fraud. Restoring Confidence.
 
 </p>
 
+<div class="hero-buttons">
+
+<a class="btn" href="mailto:Watchfraud98@gmail.com">
+
+📧 Email
+
+</a>
+
+<a class="btn" href="https://t.me/Fraudwatch_int" target="_blank">
+
+✈ Telegram
+
+</a>
+
+<a class="btn" href="https://wa.me/qr/ZJ5MAAEL5LGKF1" target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+</div>
+
 <p>
 
-© 2026 FraudWatch
+© 2026 FraudWatch. All Rights Reserved.
 
 </p>
 
@@ -147,4 +389,5 @@ Restoring Confidence.
 <script src="js/report.js"></script>
 
 </body>
+
 </html>
