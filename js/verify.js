@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 const form = document.getElementById("verifyForm");
-
 const input = document.getElementById("searchInput");
-
 const result = document.getElementById("verificationResult");
 
 if (!form || !input || !result) return;
@@ -19,15 +17,10 @@ const value = input.value.trim();
 if (value === "") {
 
 result.innerHTML = `
-
 <div class="card">
-
 <h2>⚠ Verification Required</h2>
-
-<p>Please enter something to verify.</p>
-
+<p>Please enter a phone number, email address, website, company, username, cryptocurrency wallet, or IP address.</p>
 </div>
-
 `;
 
 return;
@@ -35,15 +28,10 @@ return;
 }
 
 result.innerHTML = `
-
 <div class="card">
-
 <h2>🔎 Analysing...</h2>
-
-<p>Please wait while FraudWatch contacts the verification service.</p>
-
+<p>FraudWatch is securely analysing your submission.</p>
 </div>
-
 `;
 
 try {
@@ -53,15 +41,11 @@ const response = await fetch(API_URL, {
 method: "POST",
 
 headers: {
-
 "Content-Type": "application/json"
-
 },
 
 body: JSON.stringify({
-
 input: value
-
 })
 
 });
@@ -71,15 +55,10 @@ const data = await response.json();
 if (!data.success) {
 
 result.innerHTML = `
-
 <div class="card">
-
 <h2>❌ Verification Failed</h2>
-
 <p>${data.message}</p>
-
 </div>
-
 `;
 
 return;
@@ -87,33 +66,18 @@ return;
 }
 
 let html = `
-
 <div class="card">
-
 <h2>${data.analysis.title}</h2>
 
-<p>
+<p><strong>Input:</strong> ${data.input}</p>
 
-<strong>Input:</strong>
+<p><strong>Detected Type:</strong> ${data.detectedType}</p>
 
-${data.input}
+<p>${data.analysis.summary}</p>
 
-</p>
-
-<p>
-
-${data.analysis.summary}
-
-</p>
-
-<h3>
-
-Recommendations
-
-</h3>
+<h3>Recommendations</h3>
 
 <ul>
-
 `;
 
 data.analysis.recommendations.forEach(item => {
@@ -130,9 +94,15 @@ html += `
 
 <p>
 
-FraudWatch provides educational guidance to help you make safer decisions.
+<strong>Analysis Time:</strong>
 
-Always verify important information independently before sending money or sharing personal information.
+${new Date(data.timestamp).toLocaleString()}
+
+</p>
+
+<p>
+
+${data.disclaimer}
 
 </p>
 
@@ -148,17 +118,17 @@ result.innerHTML = `
 
 <div class="card">
 
-<h2>
-
-⚠ Connection Error
-
-</h2>
+<h2>⚠ Connection Error</h2>
 
 <p>
 
 FraudWatch could not connect to the online verification service.
 
-Please check your internet connection and try again.
+</p>
+
+<p>
+
+Please check your internet connection or try again in a few moments.
 
 </p>
 
