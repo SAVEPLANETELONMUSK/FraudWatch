@@ -12,6 +12,10 @@ return;
 
 }
 
+const params = new URLSearchParams(window.location.search);
+
+const autoSearch = params.get("search");
+
 form.addEventListener("submit", function (e) {
 
 e.preventDefault();
@@ -28,7 +32,7 @@ result.innerHTML = `
 
 <p>
 
-Please enter a phone number, email address, website, company, username or cryptocurrency wallet.
+Please enter a phone number, email address, website, company name, username, or cryptocurrency wallet address.
 
 </p>
 
@@ -40,13 +44,13 @@ return;
 
 }
 
-const match = fraudWatchDatabase.find(item =>
+const match = fraudWatchDatabase.find(function(item){
 
-item.value.toLowerCase().includes(search) ||
+return item.value.toLowerCase().includes(search) ||
 
-search.includes(item.value.toLowerCase())
+search.includes(item.value.toLowerCase());
 
-);
+});
 
 if (match) {
 
@@ -54,13 +58,35 @@ result.innerHTML = `
 
 <div class="card">
 
-<h2>✅ Educational Match Found</h2>
+<h2>
 
-<p><strong>Risk Level:</strong> ${match.risk}</p>
+✅ Educational Match Found
 
-<p><strong>Category:</strong> ${match.category}</p>
+</h2>
 
-<p><strong>Record:</strong> ${match.title}</p>
+<p>
+
+<strong>Risk Level:</strong>
+
+${match.risk}
+
+</p>
+
+<p>
+
+<strong>Category:</strong>
+
+${match.category}
+
+</p>
+
+<p>
+
+<strong>Title:</strong>
+
+${match.title}
+
+</p>
 
 <hr>
 
@@ -82,25 +108,25 @@ Recommended Next Steps
 
 <li>
 
-Verify the information using official sources.
+Verify the information through official sources.
 
 </li>
 
 <li>
 
-Do not send money because of pressure or urgency.
+Be cautious of requests for urgent payments.
 
 </li>
 
 <li>
 
-Be cautious before sharing personal or financial information.
+Do not share personal or financial information unless you have independently confirmed who you are dealing with.
 
 </li>
 
 <li>
 
-If something feels suspicious, pause and investigate further.
+If you suspect fraud, stop communicating and seek guidance before taking further action.
 
 </li>
 
@@ -108,13 +134,9 @@ If something feels suspicious, pause and investigate further.
 
 <p>
 
-<strong>Important:</strong>
-
 FraudWatch provides educational guidance only.
 
-Search results are not proof that a person, company, website, or organisation is legitimate or fraudulent.
-
-Always verify independently before making important decisions.
+Always verify information independently before making financial or personal decisions.
 
 </p>
 
@@ -148,9 +170,9 @@ No matching educational record was found for:
 
 <p>
 
-This does not mean the item is safe or unsafe.
+This does <strong>not</strong> mean the item is safe or unsafe.
 
-Continue to verify independently before making payments or sharing sensitive information.
+Continue to verify independently before sending money or sharing sensitive information.
 
 </p>
 
@@ -166,25 +188,25 @@ Recommended Safety Steps
 
 <li>
 
-Check official websites and contact details independently.
+Verify identities independently.
 
 </li>
 
 <li>
 
-Be cautious of requests for urgent payments or secrecy.
+Check official websites before making payments.
+
+</li>
+
+<li>
+
+Be cautious of pressure tactics and urgent payment requests.
 
 </li>
 
 <li>
 
 Never share passwords, banking PINs, one-time verification codes (OTPs), recovery phrases, or private keys.
-
-</li>
-
-<li>
-
-If you believe you've encountered a scam, stop communicating and seek guidance before taking further action.
 
 </li>
 
@@ -196,6 +218,12 @@ If you believe you've encountered a scam, stop communicating and seek guidance b
 
 }
 
-});
+if (autoSearch) {
+
+input.value = autoSearch;
+
+form.dispatchEvent(new Event("submit"));
+
+}
 
 });
