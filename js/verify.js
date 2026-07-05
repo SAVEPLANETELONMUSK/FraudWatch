@@ -1,91 +1,63 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
 const form = document.getElementById("verifyForm");
 const input = document.getElementById("searchInput");
-const results = document.getElementById("searchResults");
+const results = document.getElementById("verificationResult");
 
-if(!form || !input || !results) return;
+if (!form || !input || !results) return;
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function (e) {
 
 e.preventDefault();
 
-const value = input.value.trim().toLowerCase();
+const search = input.value.trim();
 
-if(value===""){
+if (search === "") {
 
-results.innerHTML=`
-<h3>Verification Results</h3>
-<p>Please enter something to verify.</p>
+results.innerHTML = `
+<h3>Please enter something to verify.</h3>
+<p>You can search a phone number, email address, website, company, username, or cryptocurrency wallet.</p>
 `;
 
 return;
 
 }
 
-let match = null;
+results.innerHTML = `
+<h3>Verification Complete</h3>
 
-for(const item of scamDatabase){
-
-if(value.includes(item.keyword)){
-
-match=item;
-break;
-
-}
-
-}
-
-if(match){
-
-results.innerHTML=`
-
-<h3>⚠ Potential Match Found</h3>
-
-<p><strong>Name:</strong> ${match.title}</p>
-
-<p><strong>Category:</strong> ${match.type}</p>
-
-<p><strong>Risk Level:</strong>
-<span class="risk-high">${match.risk}</span></p>
-
-<p>${match.message}</p>
-
-<hr>
+<p><strong>Search:</strong> ${search}</p>
 
 <p>
 
-<strong>Important:</strong>
+FraudWatch currently provides educational guidance only.
 
-This result is based on the current FraudWatch demonstration database and should not be treated as definitive proof. Continue your own independent verification before making financial or personal decisions.
+No verified record was found for this search.
+
+This does <strong>not</strong> mean the item is safe or unsafe.
+
+Always verify independently before sending money or sharing personal information.
 
 </p>
 
+<div class="card">
+
+<h4>Recommended Next Steps</h4>
+
+<ul>
+
+<li>Verify the identity independently.</li>
+
+<li>Never send money because of pressure or urgency.</li>
+
+<li>Check official websites before making payments.</li>
+
+<li>If something feels suspicious, stop and investigate further.</li>
+
+</ul>
+
+</div>
 `;
-
-}else{
-
-results.innerHTML=`
-
-<h3>✅ No Match Found</h3>
-
-<p>
-
-No matching record was found in the current FraudWatch demonstration database.
-
-</p>
-
-<p>
-
-This does <strong>not</strong> mean the person, business or website is trustworthy.
-
-Always verify identities independently before sending money or sharing sensitive information.
-
-</p>
-
-`;
-
-}
 
 });
 
