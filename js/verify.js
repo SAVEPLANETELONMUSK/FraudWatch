@@ -24,7 +24,8 @@ return;
 }
 
 const match = fraudWatchDatabase.find(item =>
-item.value.toLowerCase() === search
+item.value.toLowerCase().includes(search) ||
+search.includes(item.value.toLowerCase())
 );
 
 if (match) {
