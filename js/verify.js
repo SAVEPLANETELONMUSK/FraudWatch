@@ -2,62 +2,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const form = document.getElementById("verifyForm");
 const input = document.getElementById("searchInput");
-const results = document.getElementById("verificationResult");
+const result = document.getElementById("verificationResult");
 
-if (!form || !input || !results) return;
+if (!form || !input || !result) return;
 
 form.addEventListener("submit", function (e) {
 
 e.preventDefault();
 
-const search = input.value.trim();
+const search = input.value.trim().toLowerCase();
 
 if (search === "") {
 
-results.innerHTML = `
-<h3>Please enter something to verify.</h3>
-<p>You can search a phone number, email address, website, company, username, or cryptocurrency wallet.</p>
+result.innerHTML = `
+<h3>⚠ Search Required</h3>
+<p>Please enter a phone number, website, email address, username, company or wallet address.</p>
 `;
 
 return;
 
 }
 
-results.innerHTML = `
-<h3>Verification Complete</h3>
+const match = fraudWatchDatabase.find(item =>
+item.value.toLowerCase() === search
+);
 
-<p><strong>Search:</strong> ${search}</p>
+if (match) {
+
+result.innerHTML = `
+<h2>Verification Result</h2>
+
+<p><strong>Risk Level:</strong> ${match.risk}</p>
+
+<p><strong>Category:</strong> ${match.category}</p>
+
+<p><strong>Title:</strong> ${match.title}</p>
+
+<p>${match.guidance}</p>
 
 <p>
 
-FraudWatch currently provides educational guidance only.
+FraudWatch provides educational guidance only. Always verify information independently before making financial or personal decisions.
 
-No verified record was found for this search.
+</p>
+`;
 
-This does <strong>not</strong> mean the item is safe or unsafe.
+} else {
 
-Always verify independently before sending money or sharing personal information.
+result.innerHTML = `
+<h2>No Record Found</h2>
+
+<p>
+
+No educational record currently exists for:
+
+<strong>${search}</strong>
 
 </p>
 
-<div class="card">
+<p>
 
-<h4>Recommended Next Steps</h4>
+This does not mean the item is safe or unsafe.
 
-<ul>
+Continue to verify independently before sending money or sharing personal information.
 
-<li>Verify the identity independently.</li>
+</p>
 
-<li>Never send money because of pressure or urgency.</li>
-
-<li>Check official websites before making payments.</li>
-
-<li>If something feels suspicious, stop and investigate further.</li>
-
-</ul>
-
-</div>
 `;
+
+}
 
 });
 
