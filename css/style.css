@@ -272,19 +272,35 @@ nav a:hover{
 =========================== */
 
 footer{
-    background:#001f3f;
-    color:white;
-    text-align:center;
+    margin-top:50px;
     padding:40px 20px;
+    background:#001f3f;
+    color:#ffffff;
+    text-align:center;
 }
 
-footer h3{
-    font-size:28px;
-    margin-bottom:15px;
+footer h1,
+footer h2,
+footer h3,
+footer h4{
+    color:#ffffff;
 }
 
 footer p{
-    margin:8px 0;
+    color:#dbeafe;
+    margin:10px auto;
+    line-height:1.7;
+}
+
+footer a{
+    color:#ffd54f;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 8px;
+}
+
+footer a:hover{
+    text-decoration:underline;
 }
 
 /* ===========================
@@ -638,16 +654,77 @@ min-height:150px;
 
 }
 
-/* Footer */
+/* ===========================
+   FOOTER FIX
+=========================== */
 
-footer{
+footer .hero-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:25px 0;
+}
 
-margin-top:40px;
+footer .btn{
+    background:#0f4c81;
+    color:#ffffff;
+    border:1px solid #ffffff;
+}
 
-padding:30px 20px;
+footer .btn:hover{
+    background:#1565a9;
+}
 
-text-align:center;
+footer nav{
+    margin-bottom:25px;
+}
 
-background:#f5f5f5;
+footer nav a{
+    color:#ffffff;
+    background:transparent;
+    padding:6px 10px;
+    margin:0 6px;
+}
+
+footer nav a:hover{
+    color:#ffd54f;
+    background:transparent;
+}
+
+footer p{
+    color:#dbeafe;
+}
+
+/* Home search results */
+
+#verificationResult,
+.result-card{
+
+max-width:900px;
+margin:30px auto;
+width:100%;
+box-sizing:border-box;
+word-wrap:break-word;
+overflow-wrap:break-word;
+
+}
+
+.search-box{
+
+max-width:900px;
+margin:30px auto;
+
+}
+
+.search-box input{
+
+width:100%;
+
+}
+
+.search-box button{
+
+width:100%;
 
 }

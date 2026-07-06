@@ -138,6 +138,17 @@ Please check your internet connection or try again in a few moments.
 
 }
 
-});
+// Auto-search when arriving from the home page
+
+const params = new URLSearchParams(window.location.search);
+const searchValue = params.get("search");
+
+if (searchValue) {
+
+    input.value = searchValue;
+
+    form.dispatchEvent(new Event("submit"));
+
+}
 
 });
