@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://int-fraudwatch.netlify.app/sitemap.xml
