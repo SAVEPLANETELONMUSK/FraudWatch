@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const fs = require("fs");
 
 async function sendEmail(report) {
 
@@ -52,6 +53,9 @@ async function sendTelegram(report) {
 Reference:
 ${report.reportId}
 
+Submitted:
+${report.submitted}
+
 Category:
 ${report.category}
 
@@ -61,12 +65,25 @@ ${report.name || "Not provided"}
 Email:
 ${report.email || "Not provided"}
 
+Phone:
+${report.phone || "Not provided"}
+
+Target:
+${report.target || "Not provided"}
+
 Description:
-${report.description}
+${report.description || "Not provided"}
+
+Evidence:
+${
+  report.files && report.files.length
+    ? report.files.map(file => file.originalname).join("\n")
+    : "No files uploaded"
+}
 `;
 
   const url =
-  `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+    `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
   await fetch(url, {
     method: "POST",
@@ -80,7 +97,6 @@ ${report.description}
   });
 
 }
-
 
 module.exports = {
   sendEmail,
