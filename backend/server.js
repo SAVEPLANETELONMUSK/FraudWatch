@@ -303,17 +303,13 @@ const report = {
 console.log("📨 New FraudWatch Report");
 console.log(report);
 
-Promise.all([
-  sendEmail(report),
-  sendTelegram(report)
-])
-.then(() => {
-  console.log("📧 Email notification sent");
-  console.log("✈ Telegram notification sent");
-})
-.catch(err => {
-  console.log("Notification error:", err.message);
-});
+sendEmail(report)
+  .then(() => console.log("📧 Email notification sent"))
+  .catch(err => console.log("📧 Email error:", err.message));
+
+sendTelegram(report)
+  .then(() => console.log("✈ Telegram notification sent"))
+  .catch(err => console.log("✈ Telegram error:", err.message));
 
 res.json({
   success: true,
