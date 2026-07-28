@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
-const nodemailer = require("nodemailer");
 
 const fs = require("fs");
 const path = require("path");
@@ -21,14 +20,6 @@ const upload = multer({
   dest: "uploads/",
   limits: {
     fileSize: 10 * 1024 * 1024
-  }
-});
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
   }
 });
 
@@ -305,7 +296,10 @@ console.log(report);
 
 sendEmail(report)
   .then(() => console.log("📧 Email notification sent"))
-  .catch(err => console.log("📧 Email error:", err.message));
+  .catch(err => {
+    console.error("📧 Email error:");
+    console.error(err);
+  });
 
 sendTelegram(report)
   .then(() => console.log("✈ Telegram notification sent"))
