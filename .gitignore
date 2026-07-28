@@ -1,1 +1,19 @@
+# Environment secrets
+.env
+backend/.env
+
+# Node dependencies
+node_modules/
 backend/node_modules/
+
+# Uploads and user evidence files
+uploads/
+backend/uploads/
+
+# Netlify local files
+.netlify
+
+# Backup files
+*.backup
+*.before-upload
+*.step3

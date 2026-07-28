@@ -1,5 +1,14 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
+const multer = require("multer");
+const nodemailer = require("nodemailer");
+
+const fs = require("fs");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
+const { sendEmail, sendTelegram } = require("./services/notifications");
 
 const app = express();
 
@@ -7,6 +16,21 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
+
+const upload = multer({
+  dest: "uploads/",
+  limits: {
+    fileSize: 10 * 1024 * 1024
+  }
+});
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 app.get("/", (req, res) => {
 
@@ -240,6 +264,62 @@ disclaimer:
 
 "FraudWatch provides educational guidance only. Always verify information independently before making financial, legal, or personal decisions."
 
+});
+
+});
+
+app.post("/api/report", upload.array("evidence", 5), (req, res) => {
+
+const {
+  name,
+  email,
+  phone,
+  category,
+  target,
+  description
+} = req.body;
+
+if (!category || !description) {
+  return res.status(400).json({
+    success: false,
+    message: "Category and description are required."
+  });
+}
+
+const uploadedFiles = req.files || [];
+
+const report = {
+  reportId: "FW-" + uuidv4().slice(0, 8).toUpperCase(),
+  submitted: new Date().toISOString(),
+  name: name || "",
+  email: email || "",
+  phone: phone || "",
+  category,
+  target: target || "",
+  description,
+  files: uploadedFiles
+};
+
+console.log("📨 New FraudWatch Report");
+console.log(report);
+
+Promise.all([
+  sendEmail(report),
+  sendTelegram(report)
+])
+.then(() => {
+  console.log("📧 Email notification sent");
+  console.log("✈ Telegram notification sent");
+})
+.catch(err => {
+  console.log("Notification error:", err.message);
+});
+
+res.json({
+  success: true,
+  message: "Report received successfully.",
+  reportId: report.reportId,
+  filesReceived: uploadedFiles.length
 });
 
 });

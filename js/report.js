@@ -9,6 +9,10 @@ form.addEventListener("submit", function (e) {
 
 e.preventDefault();
 
+const name = document.getElementById("name").value.trim();
+const email = document.getElementById("email").value.trim();
+const phone = document.getElementById("phone").value.trim();
+
 const category = document.getElementById("category").value;
 const target = document.getElementById("target").value.trim();
 const description = document.getElementById("description").value.trim();
@@ -24,29 +28,57 @@ return;
 
 }
 
-const reportId = "FW-" + Date.now();
+result.innerHTML = "<p>Submitting report...</p>";
 
-result.innerHTML = `
-<h3>✅ Report Received</h3>
+fetch("/api/report", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    category,
+    target,
+    description
+  })
+})
+.then(response => response.json())
+.then(data => {
 
-<p><strong>Reference Number:</strong> ${reportId}</p>
+  if (!data.success) {
+    result.innerHTML = `
+      <h3>❌ Submission Failed</h3>
+      <p>${data.message}</p>
+    `;
+    return;
+  }
 
-<p><strong>Category:</strong> ${category}</p>
+  result.innerHTML = `
+    <h3>✅ Report Received</h3>
 
-<p><strong>Related Information:</strong> ${target || "Not provided"}</p>
+    <p><strong>Reference Number:</strong> ${data.reportId}</p>
 
-<p>
+    <p>Your report has been received successfully.</p>
 
-Thank you for your report.
+    <p>Thank you for helping protect others from fraud.</p>
+  `;
 
-FraudWatch has recorded this submission for educational purposes and future platform development.
+  form.reset();
 
-Please keep your reference number if you contact us again about this report.
+})
+.catch(error => {
 
-</p>
-`;
+  console.error(error);
 
-form.reset();
+  result.innerHTML = `
+    <h3>⚠ Connection Error</h3>
+
+    <p>FraudWatch could not contact the reporting server.</p>
+  `;
+
+});
 
 });
 

@@ -1,17 +1,26 @@
 {
-  "name": "backend",
+  "name": "fraudwatch-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "FraudWatch notification and reporting API",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "fraudwatch",
+    "fraud",
+    "reporting",
+    "security"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "nodemailer": "^9.0.3",
+    "uuid": "^14.0.1"
   }
 }

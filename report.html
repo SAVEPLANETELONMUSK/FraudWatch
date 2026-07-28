@@ -92,6 +92,26 @@ Complete the form below. FraudWatch uses these reports to support fraud awarenes
 
 <form id="reportForm">
 
+<label>Your Name (optional)</label>
+<input
+type="text"
+id="name"
+placeholder="Your name">
+
+<label>Your Email (recommended)</label>
+<input
+type="email"
+id="email"
+placeholder="your@email.com">
+
+<label>Phone Number / WhatsApp (optional)</label>
+<input
+type="tel"
+id="phone"
+name="phone"
+placeholder="+Country Code Phone Number (e.g. +1 555 123 4567)"
+autocomplete="tel">
+
 <label>
 
 Scam Category
@@ -143,6 +163,17 @@ Describe What Happened
 </label>
 
 <textarea
+
+<label>
+Upload Evidence (optional)
+</label>
+
+<input
+type="file"
+id="evidence"
+name="evidence"
+accept=".jpg,.jpeg,.png,.pdf"
+multiple>
 
 id="description"
 
