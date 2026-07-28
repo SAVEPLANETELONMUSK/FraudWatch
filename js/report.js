@@ -1,85 +1,89 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-const form = document.getElementById("reportForm");
-const result = document.getElementById("reportResult");
+  const form = document.getElementById("reportForm");
+  const result = document.getElementById("reportResult");
 
-if (!form || !result) return;
+  if (!form || !result) return;
 
-form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", function (e) {
 
-e.preventDefault();
+    e.preventDefault();
 
-const name = document.getElementById("name").value.trim();
-const email = document.getElementById("email").value.trim();
-const phone = document.getElementById("phone").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const category = document.getElementById("category").value;
+    const target = document.getElementById("target").value.trim();
+    const description = document.getElementById("description").value.trim();
+    const evidence = document.getElementById("evidence");
 
-const category = document.getElementById("category").value;
-const target = document.getElementById("target").value.trim();
-const description = document.getElementById("description").value.trim();
+    if (category === "" || description === "") {
 
-if (category === "" || description === "") {
+      result.innerHTML = `
+        <h3>⚠ Incomplete Report</h3>
+        <p>Please choose a scam category and describe what happened before submitting your report.</p>
+      `;
 
-result.innerHTML = `
-<h3>⚠ Incomplete Report</h3>
-<p>Please choose a scam category and describe what happened before submitting your report.</p>
-`;
+      return;
+    }
 
-return;
+    result.innerHTML = "<p>Submitting report...</p>";
 
-}
+    const formData = new FormData();
 
-result.innerHTML = "<p>Submitting report...</p>";
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("category", category);
+    formData.append("target", target);
+    formData.append("description", description);
 
-fetch("https://fraudwatch-backend-uih8.onrender.com/api/report", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    name,
-    email,
-    phone,
-    category,
-    target,
-    description
-  })
-})
-.then(response => response.json())
-.then(data => {
+    if (evidence && evidence.files.length > 0) {
+      for (const file of evidence.files) {
+        formData.append("evidence", file);
+      }
+    }
 
-  if (!data.success) {
-    result.innerHTML = `
-      <h3>❌ Submission Failed</h3>
-      <p>${data.message}</p>
-    `;
-    return;
-  }
+    fetch("https://fraudwatch-backend-uih8.onrender.com/api/report", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
 
-  result.innerHTML = `
-    <h3>✅ Report Received</h3>
+      if (!data.success) {
+        result.innerHTML = `
+          <h3>❌ Submission Failed</h3>
+          <p>${data.message}</p>
+        `;
+        return;
+      }
 
-    <p><strong>Reference Number:</strong> ${data.reportId}</p>
+      result.innerHTML = `
+        <h3>✅ Report Received</h3>
 
-    <p>Your report has been received successfully.</p>
+        <p><strong>Reference Number:</strong> ${data.reportId}</p>
 
-    <p>Thank you for helping protect others from fraud.</p>
-  `;
+        <p>Your report has been received successfully.</p>
 
-  form.reset();
+        <p>Thank you for helping protect others from fraud.</p>
+      `;
 
-})
-.catch(error => {
+      form.reset();
 
-  console.error(error);
+    })
+    .catch(error => {
 
-  result.innerHTML = `
-    <h3>⚠ Connection Error</h3>
+      console.error(error);
 
-    <p>FraudWatch could not contact the reporting server.</p>
-  `;
+      result.innerHTML = `
+        <h3>⚠ Connection Error</h3>
 
-});
+        <p>FraudWatch could not contact the reporting server.</p>
+      `;
 
-});
+    });
+
+  });
 
 });
