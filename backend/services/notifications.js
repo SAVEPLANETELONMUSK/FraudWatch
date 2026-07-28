@@ -10,6 +10,9 @@ async function sendEmail(report) {
     }
   });
 
+await transporter.verify();
+console.log("📧 SMTP connection verified");
+
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
