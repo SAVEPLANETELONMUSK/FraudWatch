@@ -279,6 +279,8 @@ if (!category || !description) {
 
 const uploadedFiles = req.files || [];
 
+console.log("Uploaded files:", uploadedFiles);
+
 const report = {
   reportId: "FW-" + uuidv4().slice(0, 8).toUpperCase(),
   submitted: new Date().toISOString(),
