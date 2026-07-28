@@ -30,7 +30,7 @@ return;
 
 result.innerHTML = "<p>Submitting report...</p>";
 
-fetch("/api/report", {
+fetch("https://fraudwatch-backend-uih8.onrender.com/api/report", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
