@@ -1,4 +1,4 @@
-app.get("/api/health", (req, res) => {require("dotenv").config();
+require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
@@ -24,34 +24,24 @@ const upload = multer({
 });
 
 app.get("/", (req, res) => {
-
-res.json({
-
-project: "FraudWatch",
-
-status: "Online",
-
-version: "3.0.0",
-
-message: "FraudWatch API is running successfully."
-
-});
-
+  res.json({
+    project: "FraudWatch",
+    status: "Online",
+    version: "3.0.0",
+    message: "FraudWatch API is running successfully."
+  });
 });
 
 app.get("/api/health", (req, res) => {
-
   res.json({
     success: true,
     service: "FraudWatch API",
     status: "healthy",
     time: new Date().toISOString()
   });
-
 });
 
 app.get("/api/admin/reports", (req, res) => {
-
   res.json({
     success: true,
     total: 0,
@@ -60,22 +50,7 @@ app.get("/api/admin/reports", (req, res) => {
     priority: 0,
     reports: []
   });
-
-});
-
-res.json({
-
-success: true,
-
-service: "FraudWatch API",
-
-status: "healthy",
-
-time: new Date().toISOString()
-
-});
-
-});
+}); 
 
 function detectInputType(input){
 
