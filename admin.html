@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FraudWatch Admin Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<div class="container">
+
+<h1>🛡 FraudWatch Admin</h1>
+
+<p>
+FraudWatch Intelligence Dashboard
+</p>
+
+</div>
+</header>
+
+<section class="container">
+
+<h2>Dashboard Overview</h2>
+
+<div class="card">
+
+<h3>Statistics</h3>
+
+<p>Total Reports: <strong id="totalReports">0</strong></p>
+
+<p>Pending Review: <strong id="pendingReports">0</strong></p>
+
+<p>Reviewed: <strong id="reviewedReports">0</strong></p>
+
+<p>High Priority: <strong id="priorityReports">0</strong></p>
+
+</div>
+
+<div class="card">
+
+<h3>Search Reports</h3>
+
+<input
+type="text"
+id="search"
+placeholder="Search email, phone, website, username...">
+
+<button class="btn">
+Search
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Recent Reports</h3>
+
+<table width="100%">
+
+<tr>
+
+<th>Reference</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th>Date</th>
+
+</tr>
+
+<tbody id="reportTable">
+
+<tr>
+
+<td colspan="4">
+
+No reports available.
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+</body>
+
+<script src="js/admin.js"></script>
+
+</html>

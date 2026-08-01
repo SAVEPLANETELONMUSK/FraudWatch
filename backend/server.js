@@ -41,6 +41,26 @@ message: "FraudWatch API is running successfully."
 
 app.get("/api/health", (req, res) => {
 
+app.get("/api/admin/reports", (req, res) => {
+
+  res.json({
+
+    success: true,
+
+    total: 0,
+
+    pending: 0,
+
+    reviewed: 0,
+
+    priority: 0,
+
+    reports: []
+
+  });
+
+});
+
 res.json({
 
 success: true,
@@ -302,6 +322,37 @@ sendEmail(report)
     console.error("📧 Email error:");
     console.error(err);
   });
+
+const evidence = report.files && report.files.length
+  ? report.files.map(file => file.originalname).join(", ")
+  : "";
+
+db.prepare(`
+INSERT INTO reports (
+    report_id,
+    submitted,
+    category,
+    target,
+    name,
+    email,
+    phone,
+    description,
+    evidence,
+    status
+)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+`).run(
+    report.reportId,
+    report.submitted,
+    report.category,
+    report.target,
+    report.name,
+    report.email,
+    report.phone,
+    report.description,
+    evidence,
+    "Pending"
+);
 
 sendTelegram(report)
   .then(() => console.log("✈ Telegram notification sent"))
