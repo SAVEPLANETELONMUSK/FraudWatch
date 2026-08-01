@@ -304,33 +304,6 @@ const evidence = report.files && report.files.length
   ? report.files.map(file => file.originalname).join(", ")
   : "";
 
-db.prepare(`
-INSERT INTO reports (
-    report_id,
-    submitted,
-    category,
-    target,
-    name,
-    email,
-    phone,
-    description,
-    evidence,
-    status
-)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-`).run(
-    report.reportId,
-    report.submitted,
-    report.category,
-    report.target,
-    report.name,
-    report.email,
-    report.phone,
-    report.description,
-    evidence,
-    "Pending"
-);
-
 sendTelegram(report)
   .then(() => console.log("✈ Telegram notification sent"))
   .catch(err => console.log("✈ Telegram error:", err.message));
