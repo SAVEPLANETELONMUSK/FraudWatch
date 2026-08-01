@@ -1,4 +1,4 @@
-require("dotenv").config();
+app.get("/api/health", (req, res) => {require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
@@ -41,22 +41,24 @@ message: "FraudWatch API is running successfully."
 
 app.get("/api/health", (req, res) => {
 
+  res.json({
+    success: true,
+    service: "FraudWatch API",
+    status: "healthy",
+    time: new Date().toISOString()
+  });
+
+});
+
 app.get("/api/admin/reports", (req, res) => {
 
   res.json({
-
     success: true,
-
     total: 0,
-
     pending: 0,
-
     reviewed: 0,
-
     priority: 0,
-
     reports: []
-
   });
 
 });
