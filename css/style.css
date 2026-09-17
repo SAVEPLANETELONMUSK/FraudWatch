@@ -771,3 +771,239 @@ header .brand span {
     }
 
 }
+
+/* =========================================================
+   FRAUDWATCH HOMEPAGE — PREMIUM POLISH V2
+   ========================================================= */
+
+/* Header spacing and hierarchy */
+header {
+    padding: 32px 0 28px;
+}
+
+header .container {
+    gap: 0;
+}
+
+header h1 {
+    font-size: clamp(34px, 5vw, 50px);
+    margin-bottom: 4px;
+}
+
+.tagline {
+    margin-top: 6px;
+    font-size: 15px;
+    letter-spacing: .3px;
+}
+
+/* Keep language control clearly separated above navigation */
+nav > div {
+    margin-top: 18px !important;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+nav > div label {
+    display: inline-block;
+    width: auto;
+    margin: 0 8px 0 0;
+    color: #d9edf8;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+nav > div select {
+    width: auto;
+    min-width: 150px;
+    padding: 9px 12px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 9px;
+    background: rgba(255,255,255,.10);
+    color: #fff;
+}
+
+nav > div select option {
+    color: #172536;
+    background: #fff;
+}
+
+/* Move navigation lower and give it breathing room */
+nav {
+    margin-top: 24px;
+    row-gap: 9px;
+    column-gap: 8px;
+    padding-top: 4px;
+}
+
+nav a {
+    min-height: 42px;
+    padding: 11px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* Premium hero */
+.hero {
+    padding: clamp(70px, 10vw, 112px) 20px;
+}
+
+.hero h2 {
+    max-width: 880px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.75;
+}
+
+/* Consistent CTA buttons */
+.hero-buttons,
+.buttons {
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero-buttons > .btn,
+.buttons > .btn {
+    min-width: 190px;
+}
+
+.btn {
+    min-height: 50px;
+    padding: 13px 22px;
+    border-radius: 11px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .05px;
+}
+
+/* Recovery contact buttons */
+.recovery-contact-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.recovery-contact-buttons .btn {
+    min-width: 210px;
+}
+
+/* Give major homepage sections more breathing room */
+section:not(.hero) {
+    padding-top: 34px;
+    padding-bottom: 34px;
+}
+
+section > .container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Premium cards */
+.card {
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(6,43,73,.07);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 36px rgba(6,43,73,.12);
+}
+
+.card h2,
+.card h3 {
+    line-height: 1.2;
+}
+
+/* Impact section */
+.impact-section .card {
+    border-top: 4px solid var(--fw-cyan);
+}
+
+/* Better stat presentation */
+.impact-stats {
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.stat {
+    border-radius: 15px;
+    padding: 24px 20px;
+}
+
+/* Mobile premium layout */
+@media (max-width: 700px) {
+    header {
+        padding: 26px 0 24px;
+    }
+
+    nav {
+        margin-top: 22px;
+    }
+
+    nav > div {
+        margin-top: 14px !important;
+        margin-bottom: 8px;
+    }
+
+    nav a {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 135px;
+    }
+
+    .hero {
+        padding: 62px 18px 70px;
+    }
+
+    .hero-buttons,
+    .buttons,
+    .recovery-contact-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons > .btn,
+    .buttons > .btn,
+    .recovery-contact-buttons .btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .card {
+        padding: 23px 20px;
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 430px) {
+    nav a {
+        flex-basis: 100%;
+    }
+
+    nav > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+    }
+
+    nav > div label {
+        margin: 0;
+    }
+
+    nav > div select {
+        width: min(100%, 220px);
+    }
+
+    .hero {
+        padding-top: 52px;
+    }
+}
