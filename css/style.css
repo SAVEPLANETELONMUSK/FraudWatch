@@ -1048,3 +1048,37 @@ section > .container {
         min-width: 0;
     }
 }
+
+/* Header navigation alignment */
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+header nav a {
+    margin: 0;
+    padding: 10px 13px;
+}
+
+@media (max-width: 900px) {
+    header nav {
+        gap: 6px;
+    }
+
+    header nav a {
+        padding: 9px 11px;
+    }
+}
+
+@media (max-width: 600px) {
+    header nav {
+        gap: 6px;
+    }
+
+    header nav a {
+        padding: 9px 10px;
+    }
+}
