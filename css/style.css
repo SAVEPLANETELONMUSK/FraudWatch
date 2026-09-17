@@ -184,14 +184,6 @@ nav a.active {
     border-bottom: 1px solid var(--fw-border);
 }
 
-.hero h2 {
-    color: var(--fw-navy);
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.1;
-    font-weight: 800;
-    max-width: 900px;
-    margin: 0 auto;
-}
 
 .hero p {
     margin: 20px auto;
@@ -497,11 +489,88 @@ footer a:hover {
     color: var(--fw-muted);
 }
 
-.section-title {
+
+
+/* =========================================================
+   GLOBAL HEADLINE SYSTEM — PROFESSIONAL FRAUDWATCH
+   ========================================================= */
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.15;
     font-weight: 800;
+    letter-spacing: -0.45px;
+    color: var(--fw-navy-dark);
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: clamp(19px, 2.2vw, 24px);
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -0.2px;
     color: var(--fw-navy);
+}
+
+.section-title {
+    font-size: clamp(26px, 3.4vw, 38px);
+    line-height: 1.12;
+    font-weight: 900;
+    letter-spacing: -0.6px;
+    color: var(--fw-navy-dark);
+    margin-bottom: 22px;
     text-align: center;
-    margin-bottom: 30px;
+}
+
+.hero h2 {
+    color: var(--fw-navy);
+    font-size: clamp(30px, 4.5vw, 48px);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -1px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card h2,
+.card h3,
+.services h2,
+.how-it-works h2,
+.categories h2,
+.support-banner h2,
+.impact-section h2,
+.recovery-contact-panel h3 {
+    font-weight: 800;
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 25px;
+        line-height: 1.18;
+        letter-spacing: -0.3px;
+        margin-bottom: 14px;
+    }
+
+    h3 {
+        font-size: 19px;
+        line-height: 1.25;
+        margin-bottom: 9px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+        line-height: 1.1;
+        letter-spacing: -0.6px;
+    }
 }
 
 /* =========================================================
@@ -537,7 +606,9 @@ footer a:hover {
     }
 
     .hero h2 {
-        font-size: 34px;
+        font-size: 30px;
+        line-height: 1.1;
+        letter-spacing: -0.6px;
     }
 
     .card {
