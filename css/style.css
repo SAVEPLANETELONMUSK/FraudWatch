@@ -1007,3 +1007,44 @@ section > .container {
         padding-top: 52px;
     }
 }
+
+/* Premium Partner section spacing */
+.partner-section {
+    padding: 70px 0;
+}
+
+.partner-section .card {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.partner-section .card p {
+    max-width: 760px;
+    margin: 0 auto 24px;
+    line-height: 1.75;
+}
+
+.partner-section .hero-buttons {
+    margin-top: 30px;
+    gap: 16px;
+}
+
+.partner-section .btn {
+    min-width: 220px;
+}
+
+@media (max-width: 700px) {
+    .partner-section {
+        padding: 55px 0;
+    }
+
+    .partner-section .hero-buttons {
+        gap: 12px;
+    }
+
+    .partner-section .btn {
+        width: 100%;
+        min-width: 0;
+    }
+}
