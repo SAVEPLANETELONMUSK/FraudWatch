@@ -23,3 +23,4 @@ backend/database/
 
 # Development backup files
 *.before-*
+backend/server.js.final-working-backup
