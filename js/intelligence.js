@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
 
             const response = await fetch(
-                `/api/cases/${encodeURIComponent(reportId)}`
+                `https://fraudwatch-backend-uih8.onrender.com/api/cases/${encodeURIComponent(reportId)}`
             );
 
             const data = await response.json();

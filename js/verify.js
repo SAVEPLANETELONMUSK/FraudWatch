@@ -6,7 +6,7 @@ const result = document.getElementById("verificationResult");
 
 if (!form || !input || !result) return;
 
-const API_URL = "https://fraudwatch-api.onrender.com/api/verify";
+const API_URL = "https://fraudwatch-backend-uih8.onrender.com/api/verify";
 
 form.addEventListener("submit", async (e) => {
 
