@@ -17,3 +17,9 @@ backend/uploads/
 *.backup
 *.before-upload
 *.step3
+
+# Local databases
+backend/database/
+
+# Development backup files
+*.before-*
