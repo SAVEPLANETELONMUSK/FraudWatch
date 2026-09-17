@@ -76,33 +76,50 @@ textarea {
 }
 
 /* =========================================================
-   HEADER
+   HEADER — PROFESSIONAL FRAUDWATCH BRAND
    ========================================================= */
 
 header {
     background:
+        radial-gradient(circle at 50% 0%, rgba(22, 199, 232, 0.12), transparent 34%),
         linear-gradient(135deg, var(--fw-navy-dark), var(--fw-navy));
     color: #fff;
-    padding: 24px 0 18px;
+    padding: 26px 0 20px;
     text-align: center;
     border-bottom: 3px solid var(--fw-cyan);
-    box-shadow: 0 4px 20px rgba(3, 29, 51, 0.18);
+    box-shadow: 0 6px 24px rgba(3, 29, 51, 0.22);
+}
+
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header h1 {
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    margin: 0;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    color: #ffffff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+header h1::first-letter {
+    font-size: 0.95em;
 }
 
 .tagline {
-    margin-top: 6px;
+    margin: 9px 0 0;
     color: #d9edf8;
     font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
 /* =========================================================
-   NAVIGATION
+   PROFESSIONAL NAVIGATION
    ========================================================= */
 
 nav {
@@ -110,30 +127,51 @@ nav {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 18px;
+    gap: 7px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 nav a {
-    display: inline-block;
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 14px;
-    padding: 9px 13px;
-    border-radius: 8px;
-    transition: background .2s ease, color .2s ease, transform .2s ease;
+    line-height: 1;
+    padding: 11px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.045);
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
+    background: rgba(22, 199, 232, 0.16);
+    border-color: rgba(22, 199, 232, 0.45);
+    color: #ffffff;
     transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+nav a.active {
+    background: var(--fw-cyan);
+    border-color: var(--fw-cyan);
+    color: var(--fw-navy-dark);
+    box-shadow: 0 4px 14px rgba(22, 199, 232, 0.22);
 }
 
 /* =========================================================
    HERO
    ========================================================= */
+
 
 .hero {
     position: relative;
@@ -608,4 +646,57 @@ footer a:hover {
         width: 100%;
         min-width: 0;
     }
+}
+
+/* =========================================================
+   FRAUDWATCH BRAND BLOCK
+   Supports pages using .brand instead of header h1
+   ========================================================= */
+
+header .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+header .brand a {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+header .brand a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+header .brand span {
+    display: block;
+    margin-top: 9px;
+    color: #d9edf8;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+@media (max-width: 600px) {
+
+    header .brand a {
+        font-size: 30px;
+        letter-spacing: -0.8px;
+    }
+
+    header .brand span {
+        font-size: 13px;
+        line-height: 1.45;
+        padding: 0 10px;
+    }
+
 }
