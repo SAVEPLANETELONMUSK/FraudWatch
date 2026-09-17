@@ -1,291 +1,183 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FraudWatch | Intelligence Centre</title>
-
+<title>FraudWatch | Investigation & Evidence Centre</title>
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
 
 <header>
-
 <div class="container">
 
 <h1>🛡 FraudWatch</h1>
 
 <p class="tagline">
-
 Protecting People. Preventing Fraud. Restoring Confidence.
-
 </p>
 
 <nav>
-
 <a href="index.html">Home</a>
-
 <a href="about.html">About</a>
-
 <a href="verify.html">Verify</a>
-
 <a href="report.html">Report</a>
-
 <a href="recovery.html">Recovery</a>
-
+<a href="intelligence.html">Investigation</a>
 <a href="support.html">Support</a>
-
 <a href="education.html">Education</a>
-
 <a href="contact.html">Contact</a>
-
 </nav>
 
 </div>
-
 </header>
 
 <section class="hero">
-
 <div class="container">
 
-<h2>
-
-FraudWatch Intelligence Centre
-
-</h2>
+<h2>🔎 Investigation & Evidence Centre</h2>
 
 <p>
-
-Search and learn about suspicious phone numbers, email addresses, websites, companies, usernames and cryptocurrency wallets through educational guidance.
-
+Organise your FraudWatch case, review evidence, track investigation progress
+and identify useful public-information indicators.
 </p>
 
 </div>
-
 </section>
 
 <section>
-
 <div class="container">
 
 <div class="card">
 
-<h2>
-
-🔎 Intelligence Search
-
-</h2>
+<h2>🔐 Access Your Case</h2>
 
 <p>
-
-Enter one item below to begin your search.
-
+Enter your FraudWatch case reference to securely view the information currently
+stored for that case.
 </p>
 
-<form id="intelligenceForm">
+<form id="caseLookupForm">
 
 <input
-
 type="text"
+id="caseId"
+placeholder="Example: FW-12345678"
+autocomplete="off"
+required
+>
 
-id="searchInput"
-
-placeholder="Phone number, email, website, company, username or wallet address">
-
-<button
-
-class="btn"
-
-type="submit">
-
-Search Intelligence
-
+<button class="btn" type="submit">
+View Case
 </button>
 
 </form>
 
-<div id="result" style="margin-top:20px;">
-
-<p>
-
-Search results will appear here.
-
-</p>
-
+<div id="caseResult" style="margin-top:20px;">
+<p>Enter your case reference to begin.</p>
 </div>
 
 </div>
 
 </div>
-
 </section>
 
 <section>
-
 <div class="container">
 
-<h2>
+<h2>📊 Investigation Overview</h2>
 
-What Can You Search?
-
-</h2>
+<div id="caseDashboard">
 
 <div class="card">
-
-<h3>📞 Phone Numbers</h3>
-
 <p>
-
-Look for educational guidance about suspicious phone numbers used in scam attempts.
-
+Your case information will appear here after you enter a valid case reference.
 </p>
-
-</div>
-
-<div class="card">
-
-<h3>📧 Email Addresses</h3>
-
-<p>
-
-Learn how to recognise suspicious emails and common phishing tactics.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🌐 Websites</h3>
-
-<p>
-
-Understand common warning signs before trusting unfamiliar websites.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🏢 Companies</h3>
-
-<p>
-
-Search company names to learn common fraud warning signs and the importance of independent verification before making payments or sharing sensitive information.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>💬 Usernames</h3>
-
-<p>
-
-Review guidance for suspicious Telegram, WhatsApp, and social media usernames that may be connected to impersonation or scam attempts.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>₿ Cryptocurrency Wallets</h3>
-
-<p>
-
-Learn how cryptocurrency scams commonly operate and why wallet addresses should always be verified before sending digital assets.
-
-</p>
-
 </div>
 
 </div>
 
+</div>
 </section>
 
 <section>
-
 <div class="container">
 
-<h2>
-
-Educational Guidance
-
-</h2>
+<h2>🧾 Evidence & Investigation</h2>
 
 <div class="card">
 
+<h3>Useful Evidence</h3>
+
+<ul>
+<li>📸 Screenshots of suspicious messages or websites</li>
+<li>🌐 Website URLs and domains</li>
+<li>📧 Email addresses and suspicious messages</li>
+<li>📞 Phone numbers used during contact</li>
+<li>💬 Telegram, WhatsApp or social-media usernames</li>
+<li>💳 Transaction references and payment records</li>
+<li>₿ Public cryptocurrency wallet addresses</li>
+<li>🕒 Dates, times and a clear incident timeline</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Public Information Review</h3>
+
 <p>
-
-FraudWatch provides educational guidance based on available information and recognised scam patterns.
-
+FraudWatch may help organise publicly available information relevant to a
+reported incident, such as domains, usernames, public business information
+and other publicly accessible indicators.
 </p>
 
 <p>
-
-A search result should never be treated as proof that a person, company, website, or organisation is legitimate or fraudulent.
-
-</p>
-
-<p>
-
-Always verify information independently before making financial, legal, or personal decisions.
-
+Public information is an investigative lead, not proof that a person or
+organisation committed fraud.
 </p>
 
 </div>
 
 </div>
-
 </section>
 
 <section>
-
 <div class="container">
 
-<h2>
-
-Need Assistance?
-
-</h2>
+<h2>💰 Recovery Assistance</h2>
 
 <div class="card">
 
 <p>
-
-If you would like to discuss a suspicious situation or submit a detailed report, our FraudWatch Support Centre is available through the following contact methods.
-
+If you have lost money, FraudWatch can help you organise the information needed
+to contact your bank, payment provider, platform, cryptocurrency service or
+appropriate authorities.
 </p>
 
-<div class="hero-buttons">
+<p>
+Recovery outcomes depend on the circumstances, payment method, timing and
+actions of the relevant financial institution or authority. FraudWatch does
+<strong>not guarantee that funds will be recovered.</strong>
+</p>
 
-<a class="btn" href="mailto:Watchfraud98@gmail.com">
+<div style="margin-top:20px;">
 
-📧 Email Support
-
+<a
+class="btn"
+href="https://wa.me/message/LRRDS4HRBSPGD1"
+target="_blank"
+rel="noopener">
+💬 WhatsApp Recovery Support
 </a>
 
-<a class="btn" href="https://t.me/Fraudwatch_int" target="_blank">
-
-✈ Telegram
-
-</a>
-
-<a class="btn" href="https://wa.me/message/LRRDS4HRBSPGD1" target="_blank">
-
-💬 WhatsApp
-
+<a
+class="btn"
+href="https://t.me/Fraudwatch_int"
+target="_blank"
+rel="noopener">
+✈️ Telegram Support
 </a>
 
 </div>
@@ -293,121 +185,71 @@ If you would like to discuss a suspicious situation or submit a detailed report,
 </div>
 
 </div>
-
 </section>
 
 <section>
-
 <div class="container">
 
-<h2>
-
-Future Intelligence Centre
-
-</h2>
+<h2>🛡️ Investigation Safety</h2>
 
 <div class="card">
 
 <p>
-
-FraudWatch is continually evolving. Future versions of the Intelligence Centre aim to provide richer educational resources, broader scam awareness content, multilingual support, and improved tools to help users recognise common fraud patterns and organise information before reporting to the appropriate authorities.
-
+FraudWatch focuses on lawful investigation, evidence preservation and
+public-information research.
 </p>
 
 <p>
+Never attempt to hack an account, access private systems, threaten someone,
+publish private personal information or confront an alleged scammer.
+</p>
 
-Our long-term goal is to build one of the world's most trusted educational platforms for fraud awareness, prevention, and recovery support.
-
+<p>
+<strong>Never submit passwords, PINs, OTP codes, cryptocurrency seed phrases,
+private keys or other account credentials.</strong>
 </p>
 
 </div>
 
 </div>
-
 </section>
 
 <section>
-
 <div class="container">
+
+<h2>Need Help?</h2>
 
 <div class="card">
 
-<h2>
-
-Important Reminder
-
-</h2>
-
 <p>
-
-Never share passwords, banking PINs, one-time verification codes (OTPs), recovery phrases, private keys, or other highly sensitive credentials through this website, email, Telegram, or WhatsApp.
-
+If you believe you have been targeted by fraud, preserve your evidence and
+report the incident as soon as possible.
 </p>
 
-<p>
+<a class="btn" href="report.html">
+🚨 Report a Scam
+</a>
 
-FraudWatch provides educational guidance and practical information. Always verify important information independently and report suspected crimes to the appropriate authorities in your country.
-
-</p>
+<a class="btn" href="recovery.html">
+💰 Recovery Centre
+</a>
 
 </div>
 
 </div>
-
 </section>
 
 <footer>
-
 <div class="container">
 
-<h2>
-
-🛡 FraudWatch
-
-</h2>
-
 <p>
-
-Protecting People. Preventing Fraud. Restoring Confidence.
-
-</p>
-
-<div class="hero-buttons">
-
-<a class="btn" href="mailto:Watchfraud98@gmail.com">
-
-📧 Email
-
-</a>
-
-<a class="btn" href="https://t.me/Fraudwatch_int" target="_blank">
-
-✈ Telegram
-
-</a>
-
-<a class="btn" href="https://wa.me/message/LRRDS4HRBSPGD1" target="_blank">
-
-💬 WhatsApp
-
-</a>
-
-</div>
-
-<p>
-
-© 2026 FraudWatch. All Rights Reserved.
-
+© 2026 FraudWatch. Awareness. Verification. Reporting. Investigation. Recovery.
 </p>
 
 </div>
-
 </footer>
-
-<script src="js/intelligence-data.js"></script>
 
 <script src="js/intelligence.js"></script>
 
 </body>
-
 </html>

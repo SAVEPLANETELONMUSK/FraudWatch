@@ -257,64 +257,509 @@ disclaimer:
 });
 
 app.post("/api/report", upload.array("evidence", 5), (req, res) => {
+  const {
+    name,
+    email,
+    phone,
+    category,
+    target,
+    description
+  } = req.body;
 
-const {
-  name,
-  email,
-  phone,
-  category,
-  target,
-  description
-} = req.body;
+  if (!category || !description) {
+    return res.status(400).json({
+      success: false,
+      message: "Category and description are required."
+    });
+  }
 
-if (!category || !description) {
-  return res.status(400).json({
-    success: false,
-    message: "Category and description are required."
+  const uploadedFiles = req.files || [];
+  const now = new Date().toISOString();
+
+  const caseRecord = {
+    reportId: "FW-" + uuidv4().slice(0, 8).toUpperCase(),
+    submitted: now,
+    updated_at: now,
+
+    name: name || "",
+    email: email || "",
+    phone: phone || "",
+
+    category,
+    target: target || "",
+    description,
+
+    status: "Pending",
+    priority: "Medium",
+    investigation_status: "Not Started",
+    recovery_status: "Not Started",
+
+    evidence: uploadedFiles.map(file => ({
+      originalname: file.originalname,
+      filename: file.filename,
+      mimetype: file.mimetype,
+      size: file.size
+    }))
+  };
+
+  const casesPath = path.join(__dirname, "data", "cases.json");
+
+  let cases = [];
+
+  try {
+    if (fs.existsSync(casesPath)) {
+      const raw = fs.readFileSync(casesPath, "utf8").trim();
+      cases = raw ? JSON.parse(raw) : [];
+    }
+
+    if (!Array.isArray(cases)) {
+      cases = [];
+    }
+
+    cases.push(caseRecord);
+
+    fs.writeFileSync(
+      casesPath,
+      JSON.stringify(cases, null, 2),
+      "utf8"
+    );
+  } catch (error) {
+    console.error("Case storage error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "The report could not be saved. Please try again."
+    });
+  }
+
+  console.log("📨 New FraudWatch Case");
+  console.log({
+    reportId: caseRecord.reportId,
+    category: caseRecord.category,
+    target: caseRecord.target,
+    priority: caseRecord.priority,
+    investigation_status: caseRecord.investigation_status,
+    recovery_status: caseRecord.recovery_status,
+    evidenceFiles: caseRecord.evidence.length
   });
-}
 
-const uploadedFiles = req.files || [];
+  sendEmail(caseRecord)
+    .then(() => console.log("📧 Email notification sent"))
+    .catch(err => {
+      console.error("📧 Email error:", err);
+    });
 
-console.log("Uploaded files:", uploadedFiles);
+  sendTelegram(caseRecord)
+    .then(() => console.log("✈ Telegram notification sent"))
+    .catch(err => console.error("✈ Telegram error:", err.message));
 
-const report = {
-  reportId: "FW-" + uuidv4().slice(0, 8).toUpperCase(),
-  submitted: new Date().toISOString(),
-  name: name || "",
-  email: email || "",
-  phone: phone || "",
-  category,
-  target: target || "",
-  description,
-  files: uploadedFiles
-};
-
-console.log("📨 New FraudWatch Report");
-console.log(report);
-
-sendEmail(report)
-  .then(() => console.log("📧 Email notification sent"))
-  .catch(err => {
-    console.error("📧 Email error:");
-    console.error(err);
+  res.json({
+    success: true,
+    message: "Report received and case created successfully.",
+    reportId: caseRecord.reportId,
+    status: caseRecord.status,
+    priority: caseRecord.priority,
+    investigationStatus: caseRecord.investigation_status,
+    recoveryStatus: caseRecord.recovery_status,
+    filesReceived: caseRecord.evidence.length
   });
-
-const evidence = report.files && report.files.length
-  ? report.files.map(file => file.originalname).join(", ")
-  : "";
-
-sendTelegram(report)
-  .then(() => console.log("✈ Telegram notification sent"))
-  .catch(err => console.log("✈ Telegram error:", err.message));
-
-res.json({
-  success: true,
-  message: "Report received successfully.",
-  reportId: report.reportId,
-  filesReceived: uploadedFiles.length
 });
 
+
+// ================================
+// FraudWatch Case Management API
+// ================================
+
+function loadCases() {
+  const casesPath = path.join(__dirname, "data", "cases.json");
+
+  if (!fs.existsSync(casesPath)) {
+    return [];
+  }
+
+  const raw = fs.readFileSync(casesPath, "utf8").trim();
+  if (!raw) return [];
+
+  const cases = JSON.parse(raw);
+  return Array.isArray(cases) ? cases : [];
+}
+
+function saveCases(cases) {
+  const casesPath = path.join(__dirname, "data", "cases.json");
+
+  fs.writeFileSync(
+    casesPath,
+    JSON.stringify(cases, null, 2),
+    "utf8"
+  );
+}
+
+// Get a case by FraudWatch case ID
+app.get("/api/cases/:reportId", (req, res) => {
+  try {
+    const cases = loadCases();
+
+    const caseRecord = cases.find(
+      item => item.reportId.toLowerCase() === req.params.reportId.toLowerCase()
+    );
+
+    if (!caseRecord) {
+      return res.status(404).json({
+        success: false,
+        message: "Case not found."
+      });
+    }
+
+    res.json({
+      success: true,
+      case: caseRecord
+    });
+  } catch (error) {
+    console.error("Case lookup error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to retrieve the case."
+    });
+  }
+});
+
+// Update investigation/recovery case status
+app.patch("/api/cases/:reportId", (req, res) => {
+  try {
+    const cases = loadCases();
+
+    const index = cases.findIndex(
+      item => item.reportId.toLowerCase() === req.params.reportId.toLowerCase()
+    );
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        message: "Case not found."
+      });
+    }
+
+    const allowedPriorities = [
+      "Low",
+      "Medium",
+      "High",
+      "Critical"
+    ];
+
+    const allowedInvestigationStatuses = [
+      "Not Started",
+      "Under Review",
+      "Evidence Review",
+      "Closed"
+    ];
+
+    const allowedRecoveryStatuses = [
+      "Not Started",
+      "Guidance Provided",
+      "Reporting in Progress",
+      "Recovery Follow-up",
+      "Closed"
+    ];
+
+    const currentCase = cases[index];
+
+    if (req.body.priority !== undefined) {
+      if (!allowedPriorities.includes(req.body.priority)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid priority."
+        });
+      }
+
+      currentCase.priority = req.body.priority;
+    }
+
+    if (req.body.investigation_status !== undefined) {
+      if (!allowedInvestigationStatuses.includes(req.body.investigation_status)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid investigation status."
+        });
+      }
+
+      currentCase.investigation_status =
+        req.body.investigation_status;
+    }
+
+    if (req.body.recovery_status !== undefined) {
+      if (!allowedRecoveryStatuses.includes(req.body.recovery_status)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid recovery status."
+        });
+      }
+
+      currentCase.recovery_status =
+        req.body.recovery_status;
+    }
+
+    currentCase.updated_at = new Date().toISOString();
+
+    saveCases(cases);
+
+    res.json({
+      success: true,
+      message: "Case updated successfully.",
+      case: currentCase
+    });
+
+  } catch (error) {
+    console.error("Case update error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to update the case."
+    });
+  }
+});
+
+
+// ================================
+// FraudWatch Investigation Timeline & Evidence API
+// ================================
+
+// Add an investigation timeline event
+app.post("/api/cases/:reportId/timeline", (req, res) => {
+  try {
+    const cases = loadCases();
+
+    const index = cases.findIndex(
+      item =>
+        item.reportId.toLowerCase() ===
+        req.params.reportId.toLowerCase()
+    );
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        message: "Case not found."
+      });
+    }
+
+    const title = String(req.body.title || "").trim();
+    const note = String(req.body.note || "").trim();
+    const type = String(req.body.type || "Investigation").trim();
+
+    if (!title) {
+      return res.status(400).json({
+        success: false,
+        message: "Timeline event title is required."
+      });
+    }
+
+    if (title.length > 200 || note.length > 3000) {
+      return res.status(400).json({
+        success: false,
+        message: "Timeline event is too long."
+      });
+    }
+
+    const currentCase = cases[index];
+
+    if (!Array.isArray(currentCase.timeline)) {
+      currentCase.timeline = [];
+    }
+
+    const event = {
+      id: `EV-${Date.now().toString(36).toUpperCase()}`,
+      created_at: new Date().toISOString(),
+      type,
+      title,
+      note
+    };
+
+    currentCase.timeline.push(event);
+    currentCase.updated_at = new Date().toISOString();
+
+    saveCases(cases);
+
+    res.status(201).json({
+      success: true,
+      message: "Timeline event added successfully.",
+      event,
+      case: currentCase
+    });
+
+  } catch (error) {
+    console.error("Timeline event error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to add timeline event."
+    });
+  }
+});
+
+
+// Add a structured investigation note
+app.post("/api/cases/:reportId/evidence-note", (req, res) => {
+  try {
+    const cases = loadCases();
+
+    const index = cases.findIndex(
+      item =>
+        item.reportId.toLowerCase() ===
+        req.params.reportId.toLowerCase()
+    );
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        message: "Case not found."
+      });
+    }
+
+    const title = String(req.body.title || "").trim();
+    const note = String(req.body.note || "").trim();
+    const source = String(req.body.source || "User supplied").trim();
+
+    if (!title || !note) {
+      return res.status(400).json({
+        success: false,
+        message: "Evidence note title and note are required."
+      });
+    }
+
+    if (title.length > 200 || note.length > 5000) {
+      return res.status(400).json({
+        success: false,
+        message: "Evidence note is too long."
+      });
+    }
+
+    const currentCase = cases[index];
+
+    if (!Array.isArray(currentCase.evidence_notes)) {
+      currentCase.evidence_notes = [];
+    }
+
+    const evidenceNote = {
+      id: `NOTE-${Date.now().toString(36).toUpperCase()}`,
+      created_at: new Date().toISOString(),
+      title,
+      note,
+      source
+    };
+
+    currentCase.evidence_notes.push(evidenceNote);
+    currentCase.updated_at = new Date().toISOString();
+
+    saveCases(cases);
+
+    res.status(201).json({
+      success: true,
+      message: "Evidence note added successfully.",
+      evidenceNote,
+      case: currentCase
+    });
+
+  } catch (error) {
+    console.error("Evidence note error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to add evidence note."
+    });
+  }
+});
+
+
+// Add a public-information indicator
+app.post("/api/cases/:reportId/public-indicator", (req, res) => {
+  try {
+    const cases = loadCases();
+
+    const index = cases.findIndex(
+      item =>
+        item.reportId.toLowerCase() ===
+        req.params.reportId.toLowerCase()
+    );
+
+    if (index === -1) {
+      return res.status(404).json({
+        success: false,
+        message: "Case not found."
+      });
+    }
+
+    const category = String(req.body.category || "").trim();
+    const value = String(req.body.value || "").trim();
+    const source = String(req.body.source || "").trim();
+    const notes = String(req.body.notes || "").trim();
+
+    const allowedCategories = [
+      "Domain",
+      "Website",
+      "Email",
+      "Phone",
+      "Username",
+      "Company",
+      "Public Wallet Address",
+      "Other"
+    ];
+
+    if (!allowedCategories.includes(category)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid public-information category."
+      });
+    }
+
+    if (!value) {
+      return res.status(400).json({
+        success: false,
+        message: "Indicator value is required."
+      });
+    }
+
+    if (value.length > 500 || source.length > 1000 || notes.length > 3000) {
+      return res.status(400).json({
+        success: false,
+        message: "Public-information indicator is too long."
+      });
+    }
+
+    const currentCase = cases[index];
+
+    if (!Array.isArray(currentCase.public_indicators)) {
+      currentCase.public_indicators = [];
+    }
+
+    const indicator = {
+      id: `IND-${Date.now().toString(36).toUpperCase()}`,
+      created_at: new Date().toISOString(),
+      category,
+      value,
+      source,
+      notes
+    };
+
+    currentCase.public_indicators.push(indicator);
+    currentCase.updated_at = new Date().toISOString();
+
+    saveCases(cases);
+
+    res.status(201).json({
+      success: true,
+      message: "Public-information indicator added successfully.",
+      indicator,
+      case: currentCase
+    });
+
+  } catch (error) {
+    console.error("Public indicator error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Unable to add public-information indicator."
+    });
+  }
 });
 
 app.use((req, res) => {
