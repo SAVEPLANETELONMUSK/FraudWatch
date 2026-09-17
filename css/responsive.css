@@ -1,0 +1,117 @@
+/* =========================================================
+   FRAUDWATCH — RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        width: 94%;
+    }
+
+    nav {
+        padding: 0 8px;
+    }
+
+    nav a {
+        margin: 2px;
+    }
+
+    .hero {
+        padding: 65px 18px;
+    }
+
+    .services,
+    .how-it-works,
+    .categories {
+        padding: 60px 18px;
+    }
+
+    .card {
+        margin: 14px 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    nav a {
+        width: 100%;
+        margin: 0;
+        padding: 9px 5px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .support-banner {
+        padding: 60px 18px;
+    }
+
+    .support-banner h2 {
+        font-size: 30px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    .impact-section {
+        padding: 35px 0;
+    }
+
+    footer {
+        padding: 35px 18px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 11px 16px;
+    }
+}
