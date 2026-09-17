@@ -1,331 +1,325 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
 
-<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scam Alerts Centre | FraudWatch</title>
 
-<title>FraudWatch | Scam Alerts</title>
+    <meta name="description"
+          content="FraudWatch Scam Alerts Centre provides public fraud-awareness alerts, reported scam indicators, warning signs and practical safety guidance.">
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/responsive.css">
+    <meta name="robots" content="index, follow">
 
+    <link rel="canonical"
+          href="https://fraudwatch-int.netlify.app/alerts.html">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
+    <div class="container">
 
-<div class="container">
+        <div class="brand">
+            <a href="index.html">
+                🛡 FraudWatch
+            </a>
 
-<h1>🛡 FraudWatch</h1>
+            <span>
+                Protecting People. Preventing Fraud. Restoring Confidence.
+            </span>
+        </div>
 
-<p class="tagline">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="alerts.html" class="active">🚨 Scam Alerts</a>
+            <a href="report.html">Report</a>
+            <a href="recovery.html">Recovery & Response</a>
+            <a href="support.html">Support</a>
+            <a href="education.html">Education</a>
+            <a href="contact.html">Contact</a>
+        </nav>
 
-Protecting People. Preventing Fraud. Restoring Confidence.
-
-</p>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="about.html">About</a>
-
-<a href="verify.html">Verify</a>
-
-<a href="report.html">Report</a>
-
-<a href="recovery.html">Recovery</a>
-
-<a href="support.html">Support</a>
-
-<a href="education.html">Education</a>
-
-<a href="alerts.html">Alerts</a>
-
-<a href="contact.html">Contact</a>
-
-</nav>
-
-</div>
-
+    </div>
 </header>
 
+
+<main>
+
 <section class="hero">
+    <div class="container">
 
-<div class="container">
+        <span class="eyebrow">
+            FRAUDWATCH INTELLIGENCE
+        </span>
 
-<h2>
+        <h1>
+            🚨 Scam Alerts Centre
+        </h1>
 
-🚨 Latest Scam Alerts
+        <p>
+            Stay informed about reported scam indicators, emerging fraud
+            patterns and common warning signs so you can make safer decisions.
+        </p>
 
-</h2>
+        <div class="hero-buttons">
+            <a class="btn" href="report.html">
+                🚨 Report a Scam
+            </a>
 
-<p>
+            <a class="btn btn-secondary" href="education.html">
+                📚 Learn About Scams
+            </a>
+        </div>
 
-Stay informed about common scam techniques, emerging fraud trends, and practical ways to protect yourself. These alerts are provided for educational purposes to help people recognise warning signs and make safer decisions.
-
-</p>
-
-</div>
-
+    </div>
 </section>
 
-<section>
 
-<div class="container">
+<section class="section">
+    <div class="container">
 
-<div class="card">
+        <div class="card">
 
-<h2>
+            <h2>🔎 Search Scam Alerts</h2>
 
-Current Educational Alerts
+            <p>
+                Search reported indicators such as websites, phone numbers,
+                email addresses, usernames or other identifying information.
+            </p>
 
-</h2>
+            <form class="alert-search-form"
+                  onsubmit="return searchAlerts(event)">
 
-<p>
+                <div class="form-group">
+                    <label for="alertSearch">
+                        Search indicator
+                    </label>
 
-The latest educational scam alerts will appear below.
+                    <input
+                        id="alertSearch"
+                        name="search"
+                        type="search"
+                        placeholder="Phone, email, website or username"
+                        autocomplete="off"
+                    >
+                </div>
 
-</p>
+                <button class="btn" type="submit">
+                    🔎 Search Alerts
+                </button>
 
-<div id="alertsContainer">
+            </form>
 
-<p>
+            <div id="alertSearchResult" class="results-box" hidden></div>
 
-Loading scam alerts...
+        </div>
 
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
 </section>
 
-<section>
 
-<div class="container">
+<section class="section">
+    <div class="container">
 
-<h2>
+        <h2 class="section-title">
+            Common Scam Categories
+        </h2>
 
-Why Scam Alerts Matter
+        <div class="services-grid">
 
-</h2>
+            <div class="card">
+                <h3>💰 Investment Scams</h3>
+                <p>
+                    Be cautious of guaranteed returns, urgent investment
+                    opportunities and requests to send funds through unusual
+                    payment channels.
+                </p>
+            </div>
 
-<div class="card">
+            <div class="card">
+                <h3>₿ Crypto Scams</h3>
+                <p>
+                    Watch for fake exchanges, impersonation, fraudulent
+                    investment platforms and requests for cryptocurrency
+                    payments.
+                </p>
+            </div>
 
-<h3>
+            <div class="card">
+                <h3>💼 Fake Job Scams</h3>
+                <p>
+                    Be careful when someone asks you to pay fees, purchase
+                    equipment or provide sensitive information before employment.
+                </p>
+            </div>
 
-🛡 Prevention
+            <div class="card">
+                <h3>❤️ Romance Scams</h3>
+                <p>
+                    Be cautious when an online relationship quickly leads to
+                    requests for money, gifts, transfers or financial assistance.
+                </p>
+            </div>
 
-</h3>
+            <div class="card">
+                <h3>🎣 Phishing</h3>
+                <p>
+                    Suspicious links, fake login pages and urgent messages can
+                    be used to steal passwords or other sensitive information.
+                </p>
+            </div>
 
-<p>
+            <div class="card">
+                <h3>🛡 Impersonation</h3>
+                <p>
+                    Scammers may pretend to be banks, companies, government
+                    officials, celebrities, friends or family members.
+                </p>
+            </div>
 
-Learning about common scam tactics before encountering them can help reduce the risk of financial loss and identity theft.
+            <div class="card">
+                <h3>📦 Shopping Scams</h3>
+                <p>
+                    Watch for unusually low prices, pressure to pay outside
+                    trusted platforms and sellers who disappear after payment.
+                </p>
+            </div>
 
-</p>
+            <div class="card">
+                <h3>⚠️ Recovery Scams</h3>
+                <p>
+                    Be extremely cautious of anyone promising guaranteed recovery
+                    of previously lost funds in exchange for an upfront payment.
+                </p>
+            </div>
 
-</div>
+        </div>
 
-<div class="card">
-
-<h3>
-
-📚 Education
-
-</h3>
-
-<p>
-
-Understanding how scams operate makes it easier to recognise warning signs and respond safely.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-
-🌍 Community Awareness
-
-</h3>
-
-<p>
-
-Sharing accurate fraud awareness information helps families, friends, businesses, and communities stay informed about common scam techniques and emerging threats.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-
-⚠ Stay Alert
-
-</h3>
-
-<p>
-
-Scammers frequently change their tactics. Always verify identities, websites, payment requests, and unexpected messages before taking action.
-
-</p>
-
-</div>
-
-</div>
-
+    </div>
 </section>
 
-<section>
 
-<div class="container">
+<section class="section">
+    <div class="container">
 
-<h2>
+        <div class="alert alert-warning">
 
-How to Protect Yourself
+            <h2>⚠️ Important Information</h2>
 
-</h2>
+            <p>
+                A reported indicator is not automatically proof that a person,
+                business, website or account is fraudulent. FraudWatch uses
+                reported information and public-source indicators for awareness
+                and educational purposes.
+            </p>
 
-<div class="card">
+            <p>
+                Always consider the available evidence and verify important
+                information through appropriate official or trusted sources.
+            </p>
 
-<ul>
+        </div>
 
-<li>✅ Verify identities independently.</li>
-
-<li>✅ Be cautious of urgent payment requests.</li>
-
-<li>✅ Never share passwords or one-time verification codes (OTPs).</li>
-
-<li>✅ Confirm website addresses before logging in.</li>
-
-<li>✅ Question offers that seem too good to be true.</li>
-
-<li>✅ Keep your devices and software updated.</li>
-
-<li>✅ Report suspected scams to the appropriate authorities.</li>
-
-</ul>
-
-</div>
-
-</div>
-
+    </div>
 </section>
 
-<section>
 
-<div class="container">
+<section class="section">
+    <div class="container">
 
-<div class="card">
+        <div class="card">
 
-<h2>
+            <h2>🚨 Don't See an Alert?</h2>
 
-Need to Report Something?
+            <p>
+                If you believe you have encountered a scam or suspicious
+                activity, preserve your evidence and report the incident to
+                FraudWatch.
+            </p>
 
-</h2>
+            <div class="hero-buttons">
 
-<p>
+                <a class="btn" href="report.html">
+                    🚨 Report a Scam
+                </a>
 
-If you've encountered a suspicious website, phone number, email, social media account, or investment opportunity, you can contact FraudWatch for educational guidance or submit a report through the Report Centre.
+                <a class="btn btn-secondary"
+                   href="recovery.html">
+                    💰 Recovery & Response
+                </a>
 
-</p>
+            </div>
 
-<div class="hero-buttons">
+        </div>
 
-<a class="btn" href="report.html">
-
-🚨 Report a Scam
-
-</a>
-
-<a class="btn" href="verify.html">
-
-🔎 Verify Something
-
-</a>
-
-<a class="btn" href="contact.html">
-
-📞 Contact Support
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
+    </div>
 </section>
+
+</main>
+
+
 <footer>
+    <div class="container">
 
-<div class="container">
+        <p>
+            <strong>FraudWatch</strong>
+            — Protecting People. Preventing Fraud. Restoring Confidence.
+        </p>
 
-<h2>
+        <p>
+            <a href="about.html">About</a> ·
+            <a href="privacy.html">Privacy</a> ·
+            <a href="terms.html">Terms</a> ·
+            <a href="disclaimer.html">Disclaimer</a> ·
+            <a href="contact.html">Contact</a>
+        </p>
 
-🛡 FraudWatch
-
-</h2>
-
-<p>
-
-Protecting People. Preventing Fraud. Restoring Confidence.
-
-</p>
-
-<p>
-
-FraudWatch provides educational information to help people recognise common fraud risks and make informed decisions. Always verify important information independently before making financial or personal decisions.
-
-</p>
-
-<div class="hero-buttons">
-
-<a class="btn" href="mailto:Watchfraud98@gmail.com">
-
-📧 Email
-
-</a>
-
-<a class="btn" href="https://t.me/Fraudwatch_int" target="_blank">
-
-✈ Telegram
-
-</a>
-
-<a class="btn" href="https://wa.me/message/LRRDS4HRBSPGD1" target="_blank">
-
-💬 WhatsApp
-
-</a>
-
-</div>
-
-<p>
-
-© 2026 FraudWatch. All Rights Reserved.
-
-</p>
-
-</div>
-
+    </div>
 </footer>
 
-<script src="js/scam-records.js"></script>
 
-<script src="js/alerts.js"></script>
+<script>
+function searchAlerts(event) {
+    event.preventDefault();
+
+    const input = document.getElementById("alertSearch");
+    const result = document.getElementById("alertSearchResult");
+    const value = input.value.trim();
+
+    if (!value) {
+        result.hidden = false;
+        result.innerHTML = `
+            <strong>Enter an indicator to search.</strong>
+            <p>
+                You can enter a phone number, email address, website or username.
+            </p>
+        `;
+        return false;
+    }
+
+    result.hidden = false;
+    result.innerHTML = `
+        <strong>Alert search received</strong>
+        <p>
+            FraudWatch is preparing this intelligence feature.
+            For now, if you believe this indicator is connected to fraud,
+            preserve your evidence and submit a report.
+        </p>
+
+        <a class="btn" href="report.html">
+            🚨 Report This Indicator
+        </a>
+    `;
+
+    return false;
+}
+</script>
 
 </body>
-
 </html>
